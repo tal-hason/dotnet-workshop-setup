@@ -13,6 +13,11 @@ spec:
     metadata:
       name: '{{path.basename}}'
     spec:
+      ignoreDifferences:
+      - group: apps
+        kind: Deployment
+        jqPathExpressions:
+        - .spec.template.spec.containers[@].image"
       project: default
       source:
         repoURL: https://github.com/tal-hason/dotnet-workshop-setup.git
