@@ -1,7 +1,6 @@
 kind: Deployment
 apiVersion: apps/v1
 metadata:
-  resourceVersion: '200040'
   name: dotnet-app
   labels:
     app: dotnet-app
