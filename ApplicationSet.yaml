@@ -56,8 +56,8 @@ spec:
         repoURL: https://github.com/tal-hason/dotnet-workshop-setup.git
         targetRevision: main
         path: 'Argocd-instances/application'
-        kustomize:
-          namePrefix: '{{path.basename}}-'
+        # kustomize:
+        #   namePrefix: '{{path.basename}}-'
       destination:
         server: https://kubernetes.default.svc
         namespace: '{{path.basename}}-application'
