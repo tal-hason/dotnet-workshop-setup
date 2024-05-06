@@ -30,45 +30,45 @@ spec:
           selfHeal: true
         syncOptions:
           - CreateNamespace=true
----
-apiVersion: argoproj.io/v1alpha1
-kind: ApplicationSet
-metadata:
-  name: argocd-user-applications
-spec:
-  generators:
-  - git:
-      repoURL: https://github.com/tal-hason/dotnet-workshop-setup.git
-      revision: main
-      directories:
-      - path: Argocd-instances/layers/*
-  template:
-    metadata:
-      name: '{{path.basename}}-application'
-      namespace: '{{path.basename}}-argocd'
-    spec:
-      ignoreDifferences:
-      - group: apps
-        kind: Deployment
-        jqPathExpressions:
-        - '.spec.template.spec.containers[] | .image'
-      project: default
-      source:
-        repoURL: https://github.com/tal-hason/dotnet-workshop-setup.git
-        targetRevision: main
-        path: 'Argocd-instances/application'
-        # kustomize:
-        #   namePrefix: '{{path.basename}}-'
-      destination:
-        server: https://kubernetes.default.svc
-        namespace: '{{path.basename}}-application'
-      syncPolicy:
-        managedNamespaceMetadata:
-          labels:
-            argocd.argoproj.io/managed-by: openshift-gitops
-        automated:
-          prune: true
-          selfHeal: true
-        syncOptions:
-          - CreateNamespace=true
+# ---
+# apiVersion: argoproj.io/v1alpha1
+# kind: ApplicationSet
+# metadata:
+#   name: argocd-user-applications
+# spec:
+#   generators:
+#   - git:
+#       repoURL: https://github.com/tal-hason/dotnet-workshop-setup.git
+#       revision: main
+#       directories:
+#       - path: Argocd-instances/layers/*
+#   template:
+#     metadata:
+#       name: '{{path.basename}}-application'
+#       namespace: '{{path.basename}}-argocd'
+#     spec:
+#       ignoreDifferences:
+#       - group: apps
+#         kind: Deployment
+#         jqPathExpressions:
+#         - '.spec.template.spec.containers[] | .image'
+#       project: default
+#       source:
+#         repoURL: https://github.com/tal-hason/dotnet-workshop-setup.git
+#         targetRevision: main
+#         path: 'Argocd-instances/application'
+#         # kustomize:
+#         #   namePrefix: '{{path.basename}}-'
+#       destination:
+#         server: https://kubernetes.default.svc
+#         namespace: '{{path.basename}}-application'
+#       syncPolicy:
+#         managedNamespaceMetadata:
+#           labels:
+#             argocd.argoproj.io/managed-by: openshift-gitops
+#         automated:
+#           prune: true
+#           selfHeal: true
+#         syncOptions:
+#           - CreateNamespace=true
         

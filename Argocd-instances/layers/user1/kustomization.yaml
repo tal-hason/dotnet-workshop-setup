@@ -16,3 +16,4 @@ resources:
 
 patchesStrategicMerge:
 - argocd.yaml
+- App-Path.yaml

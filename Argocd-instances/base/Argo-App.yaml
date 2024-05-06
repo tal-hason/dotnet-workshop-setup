@@ -1,0 +1,27 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: application
+spec:
+  destination:
+    namespace: user#-application
+    server: 'https://kubernetes.default.svc'
+  ignoreDifferences:
+    - group: apps
+      jqPathExpressions:
+        - '.spec.template.spec.containers[] | .image'
+      kind: Deployment
+  project: default
+  source:
+    path: Argocd-instances/application
+    repoURL: 'https://github.com/tal-hason/dotnet-workshop-setup.git'
+    targetRevision: main
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    managedNamespaceMetadata:
+      labels:
+        argocd.argoproj.io/managed-by: openshift-gitops
+    syncOptions:
+      - CreateNamespace=true
