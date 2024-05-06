@@ -12,6 +12,8 @@ spec:
       type: string
     - name: IMAGE_TAG
       type: string
+    - name: NAMESPACE
+      type: string
   tasks:
     - name: git-clone
       params:
@@ -87,7 +89,7 @@ spec:
       params:
         - name: SCRIPT
           value: |
-            oc patch deployment dotnet-app -p '{"spec":{"template":{"spec":{"containers":[{"name": "dotnet-app", "image":"$(params.REGISTRY)/$(params.IMAGE_NAME):$(params.IMAGE_TAG)"}]}}}}'
+            oc patch deployment dotnet-app -p '{"spec":{"template":{"spec":{"containers":[{"name": "dotnet-app", "image":"$(params.REGISTRY)/$(params.IMAGE_NAME):$(params.IMAGE_TAG)"}]}}}}' -n $(params.NAMESPACE)
         - name: VERSION
           value: latest
       runAfter:
