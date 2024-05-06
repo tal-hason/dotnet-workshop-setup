@@ -4,5 +4,5 @@ kind: Kustomization
 resources:
 - user-argocd.yaml
 - Pipeline.yaml
-
+- Argo-App.yaml
 
