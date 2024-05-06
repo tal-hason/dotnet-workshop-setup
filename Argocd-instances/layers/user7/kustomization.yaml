@@ -10,9 +10,11 @@ resources:
 - namespace.yaml
 - RB-1.yaml
 - RB-2.yaml
+- RB-3.yaml
 - CRB.yaml
 - group.yaml
 
 
 patchesStrategicMerge:
 - argocd.yaml
+- App-Path.yaml
