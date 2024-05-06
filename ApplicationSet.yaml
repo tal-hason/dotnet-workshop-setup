@@ -45,6 +45,7 @@ spec:
   template:
     metadata:
       name: '{{path.basename}}-application'
+      namespace: '{{path.basename}}-argocd'
     spec:
       ignoreDifferences:
       - group: apps
