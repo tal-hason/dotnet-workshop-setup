@@ -21,7 +21,7 @@ spec:
     spec:
       containers:
         - name: dotnet-app
-          image: 'ghcr.io/tal-hason/dotnet-app:v8'
+          image: 'quay.io/thason/hello-app:v7'
           env:
             - name: PORT
               value: '8080'
