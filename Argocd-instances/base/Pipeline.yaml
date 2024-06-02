@@ -12,8 +12,6 @@ spec:
       type: string
     - name: IMAGE_TAG
       type: string
-    - name: NAMESPACE
-      type: string
   tasks:
     - name: git-clone
       params:
