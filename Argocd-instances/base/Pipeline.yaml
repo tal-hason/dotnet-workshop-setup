@@ -85,17 +85,4 @@ spec:
       workspaces:
         - name: source
           workspace: storage
-    - name: openshift-client
-      params:
-        - name: SCRIPT
-          value: |
-            oc patch deployment dotnet-app -p '{"spec":{"template":{"spec":{"containers":[{"name": "dotnet-app", "image":"ghcr.io/$(params.REGISTRY)/$(params.IMAGE_NAME):$(params.IMAGE_TAG)"}]}}}}' -n $(params.NAMESPACE)
-        - name: VERSION
-          value: latest
-      runAfter:
-        - buildah
-      taskRef:
-        kind: ClusterTask
-        name: openshift-client
-  workspaces:
-    - name: storage
+
