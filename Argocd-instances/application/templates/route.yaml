@@ -8,7 +8,7 @@ metadata:
   annotations:
     link.argocd.argoproj.io/external-link: 'https://{{- include "host.name" . }}'
 spec:
-  # host: '{{-  include "host.name" . }}'
+  host: '{{-  include "host.name" . }}'
   to:
     kind: Service
     name: '{{ include "app.name" . }}-{{ .Values.global.serviceName }}'
