@@ -6,16 +6,17 @@ spec:
   destination:
     namespace: user#-application
     server: 'https://kubernetes.default.svc'
-  ignoreDifferences:
-    - group: apps
-      jqPathExpressions:
-        - '.spec.template.spec.containers[] | .image'
-      kind: Deployment
   project: default
-  source:
-    path: Argocd-instances/application
-    repoURL: 'https://github.com/tal-hason/dotnet-workshop-setup.git'
-    targetRevision: main
+  sources:
+    - path: Argocd-instances/application
+      repoURL: 'https://github.com/tal-hason/dotnet-workshop-setup.git'
+      targetRevision: main
+      helm:
+        valueFiles:
+        - $values/GitOps/values.yaml
+    - repoURL:
+      targetRevision: main
+      ref: values
   syncPolicy:
     automated:
       prune: true
