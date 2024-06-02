@@ -36,3 +36,24 @@ spec:
   {{- end }}
 {{- end }}
 {{- end }}
+
+
+
+kind: Route
+apiVersion: route.openshift.io/v1
+metadata:
+  name: user25
+  namespace: user25-application
+spec:
+  host: user25-user25-application.apps.cluster-5shjw.dynamic.redhatworkshops.io
+  to:
+    kind: Service
+    name: user25-dotnet-app
+    weight: 100
+  port:
+    targetPort: http
+  tls:
+    termination: edge
+    insecureEdgeTerminationPolicy: Allow
+  wildcardPolicy: None
+
