@@ -5,7 +5,10 @@ metadata:
   name: '{{ include "app.name" . }}-{{ .Values.global.serviceName }}'
   labels:
     {{- include "app.labels" . | nindent 4 }}
+  annotations:
+    link.argocd.argoproj.io/external-link: 'https://{{-  include "host.name" . }}'
 spec:
+  host: {{-  include "host.name" . }}
   to:
     kind: Service
     name: '{{ include "app.name" . }}-{{ .Values.global.serviceName }}'
