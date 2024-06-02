@@ -24,7 +24,3 @@ app.kubernetes.io/instance: {{ .Release.Name }}
 {{- define "certificate.path" -}}
 "Certificates/{{ .Values.global.nameOverride }}/*"
 {{- end -}}
-
-{{- define "host.name" }}
-{{ include "app.name" . }}-{{ .Release.Namespace }}.app.{{ .Values.global.ClusterFqdn }}
-{{- end }}
