@@ -21,6 +21,7 @@ spec:
 {{- end }}
       containers:
         - name: {{ .Values.global.serviceName }}
+          imagePullPolicy: Always
           image: {{ include "app.imageName" . }}
           ports:
 {{- range .Values.deploy.ports }}
