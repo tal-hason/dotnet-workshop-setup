@@ -13,7 +13,7 @@ spec:
     kind: Service
     name: '{{ include "app.name" . }}-{{ .Values.global.serviceName }}'
   port:
-    targetPort: {{ tpl .Values.deploy.route.targetPort . }}
+    targetPort: {{ tpl .Values.deploy.route.port . }}
 {{- if .Values.deploy.route.tls.enabled }}
   tls:
     termination: {{ .Values.deploy.route.tls.termination }}
