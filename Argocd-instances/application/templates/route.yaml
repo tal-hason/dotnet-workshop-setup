@@ -36,9 +36,7 @@ spec:
   {{- end }}
 {{- end }}
 {{- end }}
-
-
-
+---
 kind: Route
 apiVersion: route.openshift.io/v1
 metadata:
