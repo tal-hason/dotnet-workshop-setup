@@ -26,5 +26,5 @@ app.kubernetes.io/instance: {{ .Release.Name }}
 {{- end -}}
 
 {{- define "host.name" }}
-'{{- include "app.name" . }}-{{ .Release.Namespace }}.app.{{ .Values.global.ClusterFqdn }}'
-{{- end }}
+'{{ include "app.name" . }}-{{ .Release.Namespace }}.app.{{ .Values.global.ClusterFqdn }}'
+{{- end -}}
